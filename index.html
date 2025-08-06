@@ -10,11 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <style>
+
+  :root {
+  --primary-color: #0a3a71;     /* น้ำเงินเข้ม */
+  --secondary-color: #4c85c5;  /* น้ำเงินฟ้า */
+  --accent-color: #ffb800;     /* เหลืองทอง */
+  --light-color: #ffffff;      /* ขาว */
+}
   body {
     font-family: 'Prompt', sans-serif;
     scroll-behavior: smooth;
-    background: #ffffff;
-    color: #333;
+  background-color: var(--light-color);
+  color: var(--primary-color);
   }
 
   .hero-carousel {
@@ -71,7 +78,7 @@
   .section h2 {
     text-align: center;
     margin-bottom: 2rem;
-    color: #4d81bf;
+  color: var(--primary-color);
     font-weight: 600;
   }
 
@@ -111,9 +118,11 @@ agenda-table {
 }
 
 .agenda-table thead th {
-  background-color: #83a3ca;
+  background-color: var(--secondary-color);
   text-align: center;
   white-space: nowrap;
+    color: var(--light-color);
+
 }
 
 .agenda-table td,
@@ -135,25 +144,32 @@ agenda-table {
 }
 
   footer {
-    color: #4d81bf;
+  color: var(--light-color);
     text-align: center;
     padding: 2rem 1rem;
+      background-color: var(--primary-color);
+
   }
 
-  .btn-success {
-    background-color: #4d81bf;
-    border-color: #4d81bf;
-  }
+.btn-success {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+}
+.btn-success:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--light-color);
+}
+.btn-outline-success {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
 
-  .btn-outline-success {
-    border-color: #4d81bf;
-    color: #4d81bf;
-  }
-
-  .btn-outline-success:hover {
-    background-color: #4d81bf;
-    color: white;
-  }
+.btn-outline-success:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
 
   .scroll-gallery {
   scroll-snap-type: x mandatory;
@@ -190,6 +206,121 @@ agenda-table {
       white-space: nowrap;
     }
   }
+
+  .bi {
+  color: var(--accent-color);
+}
+
+/* === Booth Card Design === */
+.booth-card {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.booth-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.booth-title {
+  font-weight: 600;
+  color: var(--primary-color, #0a3a71);
+  margin-bottom: 0.75rem;
+}
+
+.booth-title small {
+  display: block;
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 0.25rem;
+}
+
+.booth-desc {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.booth-btn {
+  background-color: var(--accent-color, #ffb800);
+  border: none;
+  color: var(--primary-color, #0a3a71);
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.booth-btn:hover {
+  background-color: var(--primary-color, #0a3a71);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Responsive text center on mobile */
+@media (max-width: 576px) {
+  .booth-title {
+    text-align: center;
+  }
+  .booth-desc {
+    text-align: center;
+  }
+  .booth-btn {
+    width: 100%;
+  }
+}
+/* === Food Card Design === */
+.food-card {
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.food-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.food-body {
+  flex-grow: 1;
+}
+
+.food-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--primary-color, #0a3a71);
+}
+
+.food-desc {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .food-title, .food-desc {
+    text-align: center;
+  }
+}
+
+
 </style>
 
 
@@ -362,104 +493,163 @@ agenda-table {
 </section>
 
 <section class="container section" id="booth">
-  <h2 data-th="บูธแนะนำ" data-en="Booth">ข้อมูลบูธ</h2>
+  <h2 class="text-center mb-5" data-th="บูธแนะนำ" data-en="Booth">ข้อมูลผลิตภัณฑ์ภายในบูธ</h2>
   <div class="row g-4">
+
     <div class="col-md-4">
-      <div class="card h-100">
-        <img src="images/booth1.jpg" class="card-img-top" alt="บูธที่ 1">
-        <div class="card-body">
-          <h5 class="card-title">บูธแนะนำอุทยานวิทยาศาสตร์</h5>
-          <p class="card-text">แนะนำบริการและกิจกรรมของอุทยานวิทยาศาสตร์ มหาวิทยาลัยสงขลานครินทร์</p>
-        </div>
+      <div class="booth-card h-100 d-flex flex-column">
+        <h5 class="booth-title">
+          สเปรย์สมุนไพรพ่นช่องปากและลำคอ
+          <small>(Nature’s Refresh Herbal Extra Fresh Mouth Spray)</small>
+        </h5>
+        <p class="booth-desc">
+          สเปรย์สมุนไพรเพื่อสุขภาพช่องปาก ลดกลิ่นปาก และให้ความสดชื่นยาวนาน
+        </p>
+        <a href="สเปรย์สมุนไพร.html" class="btn booth-btn mt-auto">ดูข้อมูลเพิ่มเติม</a>
       </div>
     </div>
+
     <div class="col-md-4">
-      <div class="card h-100">
-        <img src="images/booth1.jpg" class="card-img-top" alt="บูธที่ 2">
-        <div class="card-body">
-          <h5 class="card-title">บูธแนะนำห้องปฏิบัติการ</h5>
-          <p class="card-text">แนะนำห้องปฏิบัติการมาตรฐานสำหรับงานวิจัยและพัฒนา</p>
-        </div>
+      <div class="booth-card h-100 d-flex flex-column">
+        <h5 class="booth-title">
+          แผ่นแปะดูดซับสิวจากยางพาราและสารสกัดจากใบกระทุ
+          <small>(Rhodory ACNE PATCH)</small>
+        </h5>
+        <p class="booth-desc">
+          แผ่นแปะสิวจากยางพารา ดูดซับสิว ลดการอักเสบ พร้อมบำรุงผิว
+        </p>
+        <a href="แผ่นแปะสิว.html" class="btn booth-btn mt-auto">ดูข้อมูลเพิ่มเติม</a>
       </div>
     </div>
+
     <div class="col-md-4">
-      <div class="card h-100">
-        <img src="images/booth1.jpg" class="card-img-top" alt="บูธที่ 3">
-        <div class="card-body">
-          <h5 class="card-title">บูธแนะนำบริการนวัตกรรม</h5>
-          <p class="card-text">แนะนำบริการนวัตกรรมและการสนับสนุนผู้ประกอบการ</p>
-        </div>
+      <div class="booth-card h-100 d-flex flex-column">
+        <h5 class="booth-title">หมอนเจลป้องกันแผลกดทับ</h5>
+        <p class="booth-desc">
+          หมอนเจลช่วยกระจายน้ำหนัก ลดแรงกดทับ 
+        </p>
+        <a href="หมอนเจลป้องกันแผลกดทับ.html" class="btn booth-btn mt-auto">ดูข้อมูลเพิ่มเติม</a>
       </div>
     </div>
+
+    <div class="col-md-4">
+      <div class="booth-card h-100 d-flex flex-column">
+        <h5 class="booth-title">ยาดมสมุนไพรแม่เศรษฐี</h5>
+        <p class="booth-desc">
+          ผลิตภัณฑ์ยาดมสมุนไพรที่ผสานภูมิปัญญาไทยกับแนวคิด Soft Power ผ่านการออกแบบบรรจุภัณฑ์ในรูปแบบ "กล่องอั่งเปา" สื่อความหมายแห่งการอวยพร “จากผู้ให้ สู่ผู้รับ”
+        </p>
+        <a href="ยาดมสมุนไพรแม่เศรษฐี.html" class="btn booth-btn mt-auto">ดูข้อมูลเพิ่มเติม</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="booth-card h-100 d-flex flex-column">
+        <h5 class="booth-title">บริการให้คำปรึกษาและจัดการระบบฮาลาลด้วยบล็อกเชน</h5>
+        <p class="booth-desc">
+ให้คำปรึกษาและตรวจประเมินเพื่อการขอรับรองฮาลาล, ห้องแลปปฏิบัติการวิเคราะห์ทดสอบคุณภาพและการปนเปื้อน ,ออกแบบบรรจุภัณฑ์กับศูนย์นวัตกรรมการออกแบบ
+        </p>
+        <a href="บริการให้คำปรึกษา.html" class="btn booth-btn mt-auto">ดูข้อมูลเพิ่มเติม</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="booth-card h-100 d-flex flex-column">
+        <h5 class="booth-title">
+          VIVV นวัตกรรมใหม่เพื่อผิวสวยสมบูรณ์แบบ
+          <small>ด้วยพลังจาก Hydrolyzed β-glucans (HBGs)</small>
+        </h5>
+        <p class="booth-desc">
+          ผลิตภัณฑ์บำรุงผิวสูตรเข้มข้นจาก HBGs ช่วยฟื้นฟูและบำรุงผิวล้ำลึก
+        </p>
+        <a href="นวัตกรรมใหม่เพื่อผิวสวย.html" class="btn booth-btn mt-auto">ดูข้อมูลเพิ่มเติม</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="booth-card h-100 d-flex flex-column">
+        <h5 class="booth-title">สูตรซุปเปอร์แบคทีเรียที่ใช้สำหรับการผลิตปุ๋ยอินทรีย์</h5>
+        <p class="booth-desc">
+          สูตรจุลินทรีย์เข้มข้น ช่วยเร่งการย่อยสลายและเพิ่มประสิทธิภาพการผลิตปุ๋ยอินทรีย์
+        </p>
+        <a href="สูตรซุปเปอร์แบคทีเรีย.html" class="btn booth-btn mt-auto">ดูข้อมูลเพิ่มเติม</a>
+      </div>
+    </div>
+
   </div>
 </section>
+
+
+
+
 
 <!-- === FOOD SECTION === -->
 <section class="section container" id="food">
-  <h2 data-th="อาหารเที่ยง" data-en="Recommended Food">อาหารเที่ยง</h2>
+  <h2 class="text-center mb-5" data-th="อาหารเที่ยง" data-en="Recommended Food">อาหารเที่ยง</h2>
   <div class="row g-4">
-      <div class="col-md-4">
-    <div class="card h-100">
-      <img src="images/ข้าวเหนียวไก่ทอด.png" class="card-img-top" alt="อาหารที่ 6">
-      <div class="card-body">
-        <h5 class="card-title">ข้าวเหนียวไก่ทอด</h5>
-        <p class="card-text">ข้าวเหนียวไก่ทอดเป็นอาหารที่มีรสชาติกลมกล่อม หอมกลิ่นไก่ทอด และมีข้าวเหนียวเป็นส่วนประกอบหลัก</p>
-      </div>
-    </div>
-  </div>
-    <div class="col-md-4">  
-      <div class="card h-100">
-        <img src="images/แกงส้มปลากระพงยอดมะพร้าว.png" class="card-img-top" alt="อาหารที่ 1">
-        <div class="card-body">
-          <h5 class="card-title">แกงส้มปลากะพงยอดมะพร้าว</h5>
-          <p class="card-text">แกงส้มปลากะพงยอดมะพร้าวเป็นอาหารที่มีรสชาติเผ็ดเปรี้ยว หอมกลิ่นมะพร้าว และมีเนื้อปลากะพงสดๆ เป็นส่วนประกอบหลัก</p>
-        </div>
-      </div>
-    </div>
+
     <div class="col-md-4">
-      <div class="card h-100">
-        <img src="images/ต้มส้มปลากระบอก.png" class="card-img-top" alt="อาหารที่ 2">
-        <div class="card-body">
-          <h5 class="card-title">ต้มส้มปลากระบอก</h5>
-          <p class="card-text">ต้มสมปลากระบอกเป็นอาหารที่มีรสชาติเผ็ดร้อน หอมกลิ่นสมุนไพร และมีเนื้อปลากระบอกสดๆ เป็นส่วนประกอบหลัก</p>
+      <div class="food-card h-100 d-flex flex-column">
+        <img src="images/ข้าวเหนียวไก่ทอด.png" class="food-img" alt="ข้าวเหนียวไก่ทอด">
+        <div class="food-body mt-3">
+          <h5 class="food-title">ข้าวเหนียวไก่ทอด</h5>
+          <p class="food-desc">ข้าวเหนียวไก่ทอดรสกลมกล่อม หอมกลิ่นไก่ทอด เสิร์ฟคู่ข้าวเหนียวนุ่ม</p>
+        </div>
+      </div>
+    </div>
 
-        </div>
-      </div>
-    </div>
-        <div class="col-md-4">
-      <div class="card h-100">
-        <img src="images/ทอดมัน-อาจาด.png" class="card-img-top" alt="อาหารที่ 4">
-        <div class="card-body">
-          <h5 class="card-title">ทอดมัน อาจาด</h5>
-          <p class="card-text">ทอดมัน อาจาดเป็นอาหารที่มีรสชาติเปรี้ยวหวาน หอมกลิ่นสมุนไพร และมีข้าวสวยเป็นส่วนประกอบหลัก</p>
-        </div>
-      </div>
-  </div>
-      <div class="col-md-4">
-      <div class="card h-100">
-        <img src="images/ยำถั่วพู.jpg" class="card-img-top" alt="อาหารที่ 5">
-        <div class="card-body">
-          <h5 class="card-title">ยำถั่วพู</h5>
-          <p class="card-text">ยำถั่วพูเป็นอาหารที่มีรสชาติเปรี้ยวหวาน หอมกลิ่นสมุนไพร และมีถั่วพูสดๆ เป็นส่วนประกอบหลัก</p>
-        </div>
-      </div>
-    </div>
     <div class="col-md-4">
-      <div class="card h-100">
-        <img src="images/ผักใบเหลียงผัดไข่.jpg" class="card-img-top" alt="อาหารที่ 3">
-        <div class="card-body">
-          <h5 class="card-title">ผักเหลียงผัดไช่</h5>
-          <p class="card-text">ผักเหลียงผัดไช่เป็นอาหารที่มีรสชาติกลมกล่อม หอมกลิ่นกระเทียม และมีผักเหลียงสดๆ เป็นส่วนประกอบหลัก</p>
-
+      <div class="food-card h-100 d-flex flex-column">
+        <img src="images/แกงส้มปลากระพงยอดมะพร้าว.png" class="food-img" alt="แกงส้มปลากะพงยอดมะพร้าว">
+        <div class="food-body mt-3">
+          <h5 class="food-title">แกงส้มปลากะพงยอดมะพร้าว</h5>
+          <p class="food-desc">แกงส้มรสเผ็ดเปรี้ยว หอมกลิ่นมะพร้าว และเนื้อปลากะพงสด</p>
         </div>
       </div>
     </div>
 
+    <div class="col-md-4">
+      <div class="food-card h-100 d-flex flex-column">
+        <img src="images/ต้มส้มปลากระบอก.png" class="food-img" alt="ต้มส้มปลากระบอก">
+        <div class="food-body mt-3">
+          <h5 class="food-title">ต้มส้มปลากระบอก</h5>
+          <p class="food-desc">ต้มส้มรสเผ็ดร้อน หอมสมุนไพร พร้อมปลากระบอกสด</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="food-card h-100 d-flex flex-column">
+        <img src="images/ทอดมัน-อาจาด.png" class="food-img" alt="ทอดมัน อาจาด">
+        <div class="food-body mt-3">
+          <h5 class="food-title">ทอดมัน อาจาด</h5>
+          <p class="food-desc">ทอดมันรสเด็ด เสิร์ฟพร้อมน้ำจิ้มอาจาดหวานเปรี้ยว</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="food-card h-100 d-flex flex-column">
+        <img src="images/ยำถั่วพู.jpg" class="food-img" alt="ยำถั่วพู">
+        <div class="food-body mt-3">
+          <h5 class="food-title">ยำถั่วพู</h5>
+          <p class="food-desc">ยำถั่วพูรสเปรี้ยวหวาน หอมสมุนไพรสดชื่น</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="food-card h-100 d-flex flex-column">
+        <img src="images/ผักใบเหลียงผัดไข่.jpg" class="food-img" alt="ผักเหลียงผัดไข่">
+        <div class="food-body mt-3">
+          <h5 class="food-title">ผักเหลียงผัดไข่</h5>
+          <p class="food-desc">ผักเหลียงผัดไข่รสกลมกล่อม หอมกลิ่นกระเทียม</p>
+        </div>
+      </div>
+    </div>
 
   </div>
-
-
 </section>
+
 
     <!-- === VIDEO SECTION === -->
     <section class="section container" id="vdo">
